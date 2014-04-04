@@ -1,4 +1,3 @@
 CMSC202
 =======
-
-Keep track of changes for CMSC202 projects and labs
+Workspace for CMSC202 Projects and Labs
