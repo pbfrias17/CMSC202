@@ -46,7 +46,7 @@ ostream& operator<<(ostream& out, const Fraction& fraction) {
 
 const Fraction operator+(const Fraction& term1, const Fraction& term2) {
 	Fraction result;
-	cout << "adding " << term1 << " + " << term2 << endl;
+	cout << "adding " << term1 << " ++++++++ " << term2 << endl;
 	int nume1 = term1.GetNumerator() * term2.GetDenominator(); 
 	int nume2 = term2.GetNumerator() * term1.GetDenominator();
 	
