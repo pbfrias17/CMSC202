@@ -4,7 +4,7 @@
 using namespace std;
 
 Fraction::Fraction() 
-: m_whole(1), m_num(1), m_den(2)
+: m_whole(0), m_num(1), m_den(2)
 {}
 
 Fraction::Fraction(int whole, int num, int den)
@@ -35,6 +35,16 @@ void Fraction::SetDenominator(int den) {
 	m_den = den;
 }
 
+void Fraction::Normalize() {
+
+
+
+
+}
+
+void Fraction::GCD() {
+
+}
 
 
 //operator overloading here
@@ -46,13 +56,11 @@ ostream& operator<<(ostream& out, const Fraction& fraction) {
 
 const Fraction operator+(const Fraction& term1, const Fraction& term2) {
 	Fraction result;
-	cout << "adding " << term1 << " ++++++++ " << term2 << endl;
-	int nume1 = term1.GetNumerator() * term2.GetDenominator(); 
-	int nume2 = term2.GetNumerator() * term1.GetDenominator();
-	
+	cout << "adding " << term1 << " + " << term2 << endl;
+
 	result.SetWhole(term1.GetWhole() + term2.GetWhole());
 	result.SetDenominator(term1.GetDenominator() * term2.GetDenominator());
-	result.SetNumerator(nume1 + nume2);
+	result.SetNumerator((term1.GetNumerator() * term2.GetDenominator()) + (term2.GetNumerator() * term1.GetDenominator()));
 	
 	return result;
 }
@@ -61,12 +69,9 @@ const Fraction operator-(const Fraction& term1, const Fraction& term2) {
 	cout << "subtracting " << term1 << " - " << term2 << endl;
 	Fraction result;
 
-	int nume1 = term1.GetNumerator() * term2.GetDenominator();
-	int nume2 = term2.GetNumerator() * term1.GetDenominator();
-
 	result.SetWhole(term1.GetWhole() - term2.GetWhole());
 	result.SetDenominator(term1.GetDenominator() * term2.GetDenominator());
-	result.SetNumerator(nume1 - nume2);
+	result.SetNumerator((term1.GetNumerator() * term2.GetDenominator()) - (term2.GetNumerator() * term1.GetDenominator()));
 
 	return result;
 }
@@ -74,12 +79,9 @@ const Fraction operator-(const Fraction& term1, const Fraction& term2) {
 const Fraction operator/(const Fraction& term1, const Fraction& term2) {
 	cout << "dividing " << term1 << " / " << term2 << endl;
 	Fraction result;
-	Fraction reciprocal;
 
-	//reciprocal()
-	result.SetWhole(term1.GetWhole() * term2.GetWhole());
-	result.SetNumerator(term1.GetNumerator() * term2.GetNumerator());
-	result.SetDenominator(term1.GetDenominator() * term2.GetDenominator());
+	result.SetNumerator(((term1.GetWhole() * term1.GetDenominator()) + term1.GetNumerator()) * term2.GetDenominator());
+	result.SetDenominator(term1.GetDenominator() * ((term2.GetWhole() * term2.GetDenominator()) + term2.GetNumerator()));
 
 	return result;
 }
