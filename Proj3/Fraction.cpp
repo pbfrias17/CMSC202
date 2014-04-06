@@ -42,56 +42,41 @@ void Fraction::SetDenominator(int den) {
 }
 
 void Fraction::Normalize() {
-	cout << "Normalizing: " << m_whole << "&" << m_num << "/" << m_den << endl;
-
-	
-	cout << endl << "GCD of " << m_num << " and " << m_den << " is.... ";
 	int gcd = GCD(m_num, m_den);
 	cout << gcd << endl;
 	m_num /= gcd;
 	m_den /= gcd;
 
-	cout << m_whole << "&" << m_num << "/" << m_den << endl;
-
+	//Converting from improper fraction to mixed number
 	m_whole += floor(m_num / m_den);
 	m_num -= m_den * floor(m_num / m_den);
 
-	cout << m_whole << "&" << m_num << "/" << m_den << endl;
-
+	//Implementing various normalization rules
+	if(m_num == 0) {
+		m_den = 1;
+	}
 
 	if(m_den < 0) {
-		cout << "if 1... \n";
 		m_den *= -1;
 		m_num *= -1;
-		cout << m_whole << "&" << m_num << "/" << m_den << endl;
-	}
-	if(m_num < 0) {
-		cout << "if 2... \n";
-		m_num *= -1;
-		m_whole *= -1;
-		cout << m_whole << "&" << m_num << "/" << m_den << endl;
-	}
-	if(m_num == 0) {
-		cout << "if 3... \n";
-		m_den = 1;
-		cout << m_whole << "&" << m_num << "/" << m_den << endl;
 	}
 
+	if(m_whole < 0) {
+		if(m_num > 0) {
+			m_num *= -1;
+		}
+	}
 }
 
 //free functions
 
 const int GCD(int x, int y) {
-	cout << "calculating GCD... \n";
-	
 	if(y > x) {
 		int temp;
 		temp = y;
 		y = x;
 		x = temp;
 	}
-
-	cout << x << " is bigger than " << y << endl;
 
 	int rem = 1;
 	while(rem) {
@@ -102,7 +87,6 @@ const int GCD(int x, int y) {
 		y = rem;
 		cout << "quotient is " << quo << endl;
 		cout << "remainder is " << rem << endl;
-
 	}
 
 	return x;

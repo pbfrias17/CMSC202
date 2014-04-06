@@ -24,6 +24,13 @@ class Fraction {
 	
 };
 
+/*********
+**GCD()
+**Calculates the Greatest Common Divisor between the two given integer values
+**Pre: None
+**Post: None
+**	Returns const int of GCD
+*********/
 const int GCD(int x, int y);
 
 ostream& operator<<(ostream& out, const Fraction& number);
