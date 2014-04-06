@@ -1,5 +1,6 @@
 //fraction.cpp
 #include <iostream>
+#include <math.h>
 #include "Fraction.h"
 using namespace std;
 
@@ -36,43 +37,62 @@ void Fraction::SetDenominator(int den) {
 }
 
 void Fraction::Normalize() {
+	cout << "Normalizing: " << m_whole << "&" << m_num << "/" << m_den << endl;
+
+	
+	cout << endl << "GCD of " << m_num << " and " << m_den << " is.... ";
+	int gcd = GCD(m_num, m_den);
+	cout << gcd << endl;
+	m_num /= gcd;
+	m_den /= gcd;
+
+	m_whole += floor(m_num / m_den);
+	m_num -= m_den * floor(m_num / m_den);
+
 	if(m_den < 0) {
+		cout << "if 1... \n";
 		m_den *= -1;
 		m_num *= -1;
 	}
 	if(m_num < 0) {
+		cout << "if 2... \n";
 		m_num *= -1;
 		m_whole *= -1;
 	}
 	if(m_num == 0) {
-		m_den = 0;
+		cout << "if 3... \n";
+		m_den = 1;
 	}
 
 }
 
 //free functions
-const int GCD(const int& x, const int& y) {
-	if(x > y) {
-		int big = x;
-		int small = y;
-	} else {
-		int big = y;
-		int small = x;
+
+const int GCD(int x, int y) {
+	cout << "calculating GCD... \n";
+	
+	if(y > x) {
+		int temp;
+		temp = y;
+		y = x;
+		x = temp;
 	}
 
+	cout << x << " is bigger than " << y << endl;
+
 	int rem = 1;
-	int count = 0;
 	while(rem) {
-		while(big >= 0) {
-			big -= small;
-			count++;
-		}
-		rem = big - (small*(count-1));
-		big = small;
-		small = rem;
+		cout << "Dividing " << x << " by " << y << endl;
+		float quo = floor(x / y);
+		rem = x - (quo*y);
+		x = y;
+		y = rem;
+		cout << "quotient is " << quo << endl;
+		cout << "remainder is " << rem << endl;
+
 	}
-	
-	return rem;
+
+	return x;
 
 }
 

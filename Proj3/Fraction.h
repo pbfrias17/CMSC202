@@ -24,6 +24,7 @@ class Fraction {
 	
 };
 
+const int GCD(int x, int y);
 
 ostream& operator<<(ostream& out, const Fraction& number);
 const Fraction operator+(const Fraction& term1, const Fraction& term2);
