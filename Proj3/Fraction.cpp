@@ -60,7 +60,7 @@ void Fraction::SetDenominator(int den) {
 
 void Fraction::Normalize() {
 	int gcd = GCD(m_num, m_den);
-	cout << gcd << endl;
+
 	m_num /= gcd;
 	m_den /= gcd;
 
