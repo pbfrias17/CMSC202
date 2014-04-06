@@ -4,7 +4,7 @@
 using namespace std;
 
 Fraction::Fraction() 
-: m_whole(0), m_num(1), m_den(2)
+: m_whole(0), m_num(0), m_den(1)
 {}
 
 Fraction::Fraction(int whole, int num, int den)
@@ -36,13 +36,17 @@ void Fraction::SetDenominator(int den) {
 }
 
 void Fraction::Normalize() {
-
-
-
-
-}
-
-void Fraction::GCD() {
+	if(m_den < 0) {
+		m_den *= -1;
+		m_num *= -1;
+	}
+	if(m_num < 0) {
+		m_num *= -1;
+		m_whole *= -1;
+	}
+	if(m_num == 0) {
+		m_den = 0;
+	}
 
 }
 
@@ -61,7 +65,7 @@ const Fraction operator+(const Fraction& term1, const Fraction& term2) {
 	result.SetWhole(term1.GetWhole() + term2.GetWhole());
 	result.SetDenominator(term1.GetDenominator() * term2.GetDenominator());
 	result.SetNumerator((term1.GetNumerator() * term2.GetDenominator()) + (term2.GetNumerator() * term1.GetDenominator()));
-	
+	result.Normalize();
 	return result;
 }
 
@@ -72,7 +76,7 @@ const Fraction operator-(const Fraction& term1, const Fraction& term2) {
 	result.SetWhole(term1.GetWhole() - term2.GetWhole());
 	result.SetDenominator(term1.GetDenominator() * term2.GetDenominator());
 	result.SetNumerator((term1.GetNumerator() * term2.GetDenominator()) - (term2.GetNumerator() * term1.GetDenominator()));
-
+	result.Normalize();
 	return result;
 }
 
@@ -82,7 +86,7 @@ const Fraction operator/(const Fraction& term1, const Fraction& term2) {
 
 	result.SetNumerator(((term1.GetWhole() * term1.GetDenominator()) + term1.GetNumerator()) * term2.GetDenominator());
 	result.SetDenominator(term1.GetDenominator() * ((term2.GetWhole() * term2.GetDenominator()) + term2.GetNumerator()));
-
+	result.Normalize();
 	return result;
 }
 
@@ -93,7 +97,7 @@ const Fraction operator*(const Fraction& term1, const Fraction& term2) {
 	result.SetWhole(term1.GetWhole() * term2.GetWhole());
 	result.SetNumerator(term1.GetNumerator() * term2.GetNumerator());
 	result.SetDenominator(term1.GetDenominator() * term2.GetDenominator());
-
+	result.Normalize();
 	return result;
 }
 

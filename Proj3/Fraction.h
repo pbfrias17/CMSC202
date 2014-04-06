@@ -20,6 +20,7 @@ class Fraction {
 		void SetWhole(int whole);
 		void SetNumerator(int num);
 		void SetDenominator(int den);
+		void Normalize();
 	
 };
 
