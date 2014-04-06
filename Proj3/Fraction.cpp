@@ -1,5 +1,6 @@
 //fraction.cpp
 #include <iostream>
+#include <cstdlib>
 #include <math.h>
 #include "Fraction.h"
 using namespace std;
@@ -9,8 +10,12 @@ Fraction::Fraction()
 {}
 
 Fraction::Fraction(int whole, int num, int den)
-: m_whole(whole), m_num(num), m_den(den)
-{}
+: m_whole(whole), m_num(num), m_den(den) {
+	if(!m_den) {
+		cout << "ERROR: DIVISION BY ZERO IS NOT ALLOWED. \n    OPERATIONS ABORTED... \n";
+		exit(0);
+	}
+}
 
 int Fraction::GetWhole() const {
 	return m_whole;
@@ -110,34 +115,30 @@ const int GCD(int x, int y) {
 //operator overloading here
 
 ostream& operator<<(ostream& out, const Fraction& fraction) {
+
 	out << fraction.GetWhole() << "&" << fraction.GetNumerator() << "/" << fraction.GetDenominator();
 	return out;
 }
 
 const Fraction operator+(const Fraction& term1, const Fraction& term2) {
-	Fraction result;
-	cout << "adding " << term1 << " + " << term2 << endl;
+	Fraction frac1(0, ((term1.GetWhole() * term1.GetDenominator() * term2.GetDenominator()) + (term1.GetNumerator() * term2.GetDenominator())), (term1.GetDenominator() * term2.GetDenominator()));
+	Fraction frac2(0, ((term2.GetWhole() * term2.GetDenominator() * term1.GetDenominator()) + (term2.GetNumerator() * term1.GetDenominator())), (term1.GetDenominator() * term2.GetDenominator()));
+	Fraction result(0, (frac1.GetNumerator() + frac2.GetNumerator()), frac1.GetDenominator());
 
-	result.SetWhole(term1.GetWhole() + term2.GetWhole());
-	result.SetDenominator(term1.GetDenominator() * term2.GetDenominator());
-	result.SetNumerator((term1.GetNumerator() * term2.GetDenominator()) + (term2.GetNumerator() * term1.GetDenominator()));
 	result.Normalize();
 	return result;
 }
 
 const Fraction operator-(const Fraction& term1, const Fraction& term2) {
-	cout << "subtracting " << term1 << " - " << term2 << endl;
-	Fraction result;
+	Fraction frac1(0, ((term1.GetWhole() * term1.GetDenominator() * term2.GetDenominator()) + (term1.GetNumerator() * term2.GetDenominator())), (term1.GetDenominator() * term2.GetDenominator()));
+	Fraction frac2(0, ((term2.GetWhole() * term2.GetDenominator() * term1.GetDenominator()) + (term2.GetNumerator() * term1.GetDenominator())), (term1.GetDenominator() * term2.GetDenominator()));
+	Fraction result(0, (frac1.GetNumerator() - frac2.GetNumerator()), frac1.GetDenominator());
 
-	result.SetWhole(term1.GetWhole() - term2.GetWhole());
-	result.SetDenominator(term1.GetDenominator() * term2.GetDenominator());
-	result.SetNumerator((term1.GetNumerator() * term2.GetDenominator()) - (term2.GetNumerator() * term1.GetDenominator()));
 	result.Normalize();
 	return result;
 }
 
 const Fraction operator/(const Fraction& term1, const Fraction& term2) {
-	cout << "dividing " << term1 << " / " << term2 << endl;
 	Fraction result;
 
 	result.SetNumerator(((term1.GetWhole() * term1.GetDenominator()) + term1.GetNumerator()) * term2.GetDenominator());
@@ -147,7 +148,6 @@ const Fraction operator/(const Fraction& term1, const Fraction& term2) {
 }
 
 const Fraction operator*(const Fraction& term1, const Fraction& term2) {
-	cout << "multiplying " << term1 << " * " << term2 << endl;
 	Fraction result;
 
 	result.SetWhole(term1.GetWhole() * term2.GetWhole());
