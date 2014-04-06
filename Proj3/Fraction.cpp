@@ -46,22 +46,30 @@ void Fraction::Normalize() {
 	m_num /= gcd;
 	m_den /= gcd;
 
+	cout << m_whole << "&" << m_num << "/" << m_den << endl;
+
 	m_whole += floor(m_num / m_den);
 	m_num -= m_den * floor(m_num / m_den);
+
+	cout << m_whole << "&" << m_num << "/" << m_den << endl;
+
 
 	if(m_den < 0) {
 		cout << "if 1... \n";
 		m_den *= -1;
 		m_num *= -1;
+		cout << m_whole << "&" << m_num << "/" << m_den << endl;
 	}
 	if(m_num < 0) {
 		cout << "if 2... \n";
 		m_num *= -1;
 		m_whole *= -1;
+		cout << m_whole << "&" << m_num << "/" << m_den << endl;
 	}
 	if(m_num == 0) {
 		cout << "if 3... \n";
 		m_den = 1;
+		cout << m_whole << "&" << m_num << "/" << m_den << endl;
 	}
 
 }
