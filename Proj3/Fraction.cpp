@@ -123,37 +123,38 @@ ostream& operator<<(ostream& out, const Fraction& fraction) {
 const Fraction operator+(const Fraction& term1, const Fraction& term2) {
 	Fraction frac1(0, ((term1.GetWhole() * term1.GetDenominator() * term2.GetDenominator()) + (term1.GetNumerator() * term2.GetDenominator())), (term1.GetDenominator() * term2.GetDenominator()));
 	Fraction frac2(0, ((term2.GetWhole() * term2.GetDenominator() * term1.GetDenominator()) + (term2.GetNumerator() * term1.GetDenominator())), (term1.GetDenominator() * term2.GetDenominator()));
+	
 	Fraction result(0, (frac1.GetNumerator() + frac2.GetNumerator()), frac1.GetDenominator());
-
 	result.Normalize();
+	
 	return result;
 }
 
 const Fraction operator-(const Fraction& term1, const Fraction& term2) {
 	Fraction frac1(0, ((term1.GetWhole() * term1.GetDenominator() * term2.GetDenominator()) + (term1.GetNumerator() * term2.GetDenominator())), (term1.GetDenominator() * term2.GetDenominator()));
 	Fraction frac2(0, ((term2.GetWhole() * term2.GetDenominator() * term1.GetDenominator()) + (term2.GetNumerator() * term1.GetDenominator())), (term1.GetDenominator() * term2.GetDenominator()));
+	
 	Fraction result(0, (frac1.GetNumerator() - frac2.GetNumerator()), frac1.GetDenominator());
-
 	result.Normalize();
+	
 	return result;
 }
 
 const Fraction operator/(const Fraction& term1, const Fraction& term2) {
 	Fraction result;
-
 	result.SetNumerator(((term1.GetWhole() * term1.GetDenominator()) + term1.GetNumerator()) * term2.GetDenominator());
 	result.SetDenominator(term1.GetDenominator() * ((term2.GetWhole() * term2.GetDenominator()) + term2.GetNumerator()));
 	result.Normalize();
+	
 	return result;
 }
 
 const Fraction operator*(const Fraction& term1, const Fraction& term2) {
 	Fraction result;
-
-	result.SetWhole(term1.GetWhole() * term2.GetWhole());
-	result.SetNumerator(term1.GetNumerator() * term2.GetNumerator());
+	result.SetNumerator(((term1.GetWhole() * term1.GetDenominator()) + term1.GetNumerator()) * ((term2.GetWhole() * term2.GetDenominator()) + term2.GetNumerator()));
 	result.SetDenominator(term1.GetDenominator() * term2.GetDenominator());
 	result.Normalize();
+	
 	return result;
 }
 
