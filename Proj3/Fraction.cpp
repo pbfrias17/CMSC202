@@ -50,6 +50,34 @@ void Fraction::Normalize() {
 
 }
 
+//free functions
+const int GCD(const int& x, const int& y) {
+	if(x > y) {
+		int big = x;
+		int small = y;
+	} else {
+		int big = y;
+		int small = x;
+	}
+
+	int rem = 1;
+	int count = 0;
+	while(rem) {
+		while(big >= 0) {
+			big -= small;
+			count++;
+		}
+		rem = big - (small*(count-1));
+		big = small;
+		small = rem;
+	}
+	
+	return rem;
+
+}
+
+
+
 
 //operator overloading here
 
