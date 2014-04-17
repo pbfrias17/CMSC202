@@ -13,7 +13,7 @@ public:
 	Residence();
 	Residence(int rooms, int walls, bool hasWasher);
 	double virtual PropertyValue() const;
-	int NumWindows() const;
+	int virtual NumWindows() const;
 	friend const ostream& operator<<(ostream& os, const Residence& res);
 };
 

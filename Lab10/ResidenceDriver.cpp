@@ -16,8 +16,9 @@ int main() {
 	cout << "\nApartment: ";
 	//make a new Apartment object on the 2nd floor that has a washer
 	//use toString to print the values related to this apartment
-	Apartment apt;
+	Apartment apt(4, 4, true, 2);
 	cout << apt;
+	cout << "Story: " << apt.GetStory() << endl;
 
 	cout << "\nTent: ";
 	//make a new Tent object

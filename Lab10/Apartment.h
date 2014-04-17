@@ -7,6 +7,7 @@ private:
 	int m_story;
 public:
 	Apartment();
+	Apartment(int rooms, int walls, bool hasWasher, int story);
 	int GetStory() const;
 	double PropertyValue() const;
 };
