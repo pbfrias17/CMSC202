@@ -14,7 +14,7 @@ public:
 	Residence(int rooms, int walls, bool hasWasher);
 	double virtual PropertyValue() const;
 	int NumWindows() const;
-	friend ostream& operator<<(ostream& os, const Residence& res);
+	friend const ostream& operator<<(ostream& os, const Residence& res);
 };
 
 #endif //RESIDENCE_H

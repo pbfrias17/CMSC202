@@ -25,7 +25,7 @@ int Residence::NumWindows() const{
 	return m_walls * 2;
 }
 
-ostream& operator<<(ostream& out, const Residence& res) {
+const ostream& operator<<(ostream& out, const Residence& res) {
 	out << endl;
 	out << "Number of Rooms: " << res.m_rooms << endl;
 	out << "Number of Walls: " << res.m_walls << endl;
