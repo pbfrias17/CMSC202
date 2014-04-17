@@ -22,8 +22,11 @@ int Residence::NumWindows() const{
 }
 
 ostream& operator<<(ostream& out, const Residence& res) {
-	out << res.PropertyValue() << endl;
-	out << res.HasWasher() << endl;
-	out << res.NumWindows() << endl;
-	return out;
+	out << endl;
+	out << "Number of Rooms: " << m_rooms << endl;
+	out << "Number of Walls: " << m_walls << endl;
+	out << "Number of Windows: " << res.NumWindows() << endl;
+	out << "Washer: " << res.HasWasher() << endl;
+	out << "Property Value: $" << res.PropertyValue() << endl;
+
 }
