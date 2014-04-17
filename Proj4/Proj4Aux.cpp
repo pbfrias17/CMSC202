@@ -14,13 +14,16 @@ using namespace std;
 GridGame *SetupGame(int argc, char *argv[]) {
 	GridGame *game = NULL;
 
-	if(argc != 2) {
+	if (argc != 2) {
 		cerr << "Syntax: " << argv[0] << " {ttt|reversi}" << endl;
-	} else if(strcmp(argv[1], "ttt") == 0) {
+	}
+	else if (strcmp(argv[1], "ttt") == 0) {
 		game = new TicTacToe("XO");
-	} else if(strcmp(argv[1], "reversi") == 0) {
+	}
+	else if (strcmp(argv[1], "reversi") == 0) {
 		game = new Reversi("XO");
-	} else {
+	}
+	else {
 		cerr << argv[1] << ": unrecognized game\n";
 	}
 	return game;
@@ -30,7 +33,7 @@ GridGame *SetupGame(int argc, char *argv[]) {
 bool GameSpecificIsDone(GridGame *game) {
 	bool isDone;
 
-	switch(game->GetType()) {
+	switch (game->GetType()) {
 	case GAME_TICTACTOE:
 	{
 						   TicTacToe *realGame = static_cast<TicTacToe*>(game);
@@ -61,9 +64,9 @@ void DoOnePlayer(GridGame *game, int player) {
 		--row, --col; // Go from 1,1 origin tto 0,0
 		cout << endl;
 		errorStr = game->IsLegalMove(player, row, col);
-		if(errorStr == NULL) {
+		if (errorStr == NULL) {
 			/* All okay--go ahead and do the move */
-			switch(game->GetType()) {
+			switch (game->GetType()) {
 			case GAME_TICTACTOE:
 			{
 								   TicTacToe *realGame = static_cast<TicTacToe*>(game);
@@ -80,14 +83,15 @@ void DoOnePlayer(GridGame *game, int player) {
 				cerr << "In middle of unknown game???\n";
 				exit(1);
 			}
-		} else {
+		}
+		else {
 			cout << "Illegal move: " << errorStr << endl;
 		}
-	} while(errorStr != NULL);
+	} while (errorStr != NULL);
 }
 
 void GameSpecificOutputResults(GridGame *game) {
-	switch(game->GetType()) {
+	switch (game->GetType()) {
 	case GAME_TICTACTOE:
 	{
 						   TicTacToe *realGame = static_cast<TicTacToe*>(game);

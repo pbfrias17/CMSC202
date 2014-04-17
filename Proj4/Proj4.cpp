@@ -14,11 +14,11 @@ using namespace std;
 int main(int argc, char *argv[]) {
 	GridGame *game;
 
-	if((game = SetupGame(argc, argv)) == NULL) {
+	if ((game = SetupGame(argc, argv)) == NULL) {
 		exit(1);
 	}
 	game->OutputGreeting();
-	for(int player = 0; !GameSpecificIsDone(game); player = 1 - player) {
+	for (int player = 0; !GameSpecificIsDone(game); player = 1 - player) {
 		DoOnePlayer(game, player);
 		game->OutputBoard();
 	}
