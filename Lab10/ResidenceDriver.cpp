@@ -13,13 +13,13 @@ int main() {
 	House house;
 	cout << house;
 
-	cout << "Apartment: ";
+	cout << "\nApartment: ";
 	//make a new Apartment object on the 2nd floor that has a washer
 	//use toString to print the values related to this apartment
 	Apartment apt;
 	cout << apt;
 
-	cout << "Tent: ";
+	cout << "\nTent: ";
 	//make a new Tent object
 	//use toString to print the values related to this tent
 	Tent tent;

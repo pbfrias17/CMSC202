@@ -12,7 +12,7 @@ protected:
 public:
 	Residence();
 	Residence(int rooms, int walls, bool hasWasher);
-	double PropertyValue() const;
+	double virtual PropertyValue() const;
 	int NumWindows() const;
 	friend ostream& operator<<(ostream& os, const Residence& res);
 };
