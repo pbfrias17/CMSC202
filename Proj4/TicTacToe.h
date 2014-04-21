@@ -14,6 +14,13 @@ public:
 
 	TicTacToe(const char *playerSymbols);
 
+	bool IsDone() const;
+
+	void DoMove(int player, int row, int col);
+
+	void OutputResults() const;
+
+
 	//
 	// SORRY, JANE DOE, BUT I DID NOT GET TO REALLY WORK ON
 	// THIS MUCH--YOU SHOULD LOOK AT THE MOST EXCELLENT CODE IN
