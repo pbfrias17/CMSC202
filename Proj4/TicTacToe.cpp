@@ -35,10 +35,15 @@ TicTacToe::TicTacToe(const char *playerSymbols)
 }
 
 void TicTacToe::DoMove(int player, int row, int col) {
+	DoBasicMove(player, row, col);
 
 }
 
-bool TicTacToe::IsDone() const { return false; }
+bool TicTacToe::IsDone() const {
+	char playerSym = GetPlayerSymbol(player);
+	for(int i = 0; i <= m_boardSize; i+=2) {
+		if(m_board[row][col] == playerSym) {
+			
 
 void TicTacToe::OutputResults() const {}
 
