@@ -22,7 +22,6 @@ int main(int argc, char *argv[]) {
 		exit(1);
 	}
 	game->OutputGreeting();
-	cin >> myInput;
 	for (int player = 0; !GameSpecificIsDone(game); player = 1 - player) {
 		DoOnePlayer(game, player);
 		game->OutputBoard();

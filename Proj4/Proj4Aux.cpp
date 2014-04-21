@@ -63,6 +63,7 @@ void DoOnePlayer(GridGame *game, int player) {
 		cin >> row >> col;
 		--row, --col; // Go from 1,1 origin tto 0,0
 		cout << endl;
+
 		errorStr = game->IsLegalMove(player, row, col);
 		if (errorStr == NULL) {
 			/* All okay--go ahead and do the move */

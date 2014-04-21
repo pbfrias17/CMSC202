@@ -10,6 +10,7 @@ TicTacToe::TicTacToe()
 : GridGame(GAME_TICTACTOE, "Tic Tac Toe") {
 	m_playerSymbols = "XO";
 
+	m_boardSize = TICTACTOE_BOARD_SIZE;
 	m_board = new char *[m_boardSize];
 	for(int r = 0; r < m_boardSize; r++) {
 		m_board[r] = new char[m_boardSize];
@@ -23,6 +24,7 @@ TicTacToe::TicTacToe(const char *playerSymbols)
 : GridGame(GAME_TICTACTOE, "Tic Tac Toe") {
 	m_playerSymbols = playerSymbols;
 
+	m_boardSize = TICTACTOE_BOARD_SIZE;
 	m_board = new char *[m_boardSize];
 	for(int r = 0; r < m_boardSize; r++) {
 		m_board[r] = new char[m_boardSize];
