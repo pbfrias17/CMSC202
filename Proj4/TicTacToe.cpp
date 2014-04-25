@@ -21,6 +21,7 @@ using namespace std;
 TicTacToe::TicTacToe()
 : GridGame(GAME_TICTACTOE, "Tic Tac Toe") {
 	m_playerSymbols = "XO";
+	m_winner = 'n';
 
 	m_boardSize = TICTACTOE_BOARD_SIZE;
 	m_board = new char *[m_boardSize];
@@ -35,6 +36,7 @@ TicTacToe::TicTacToe()
 TicTacToe::TicTacToe(const char *playerSymbols)
 : GridGame(GAME_TICTACTOE, "Tic Tac Toe") {
 	m_playerSymbols = playerSymbols;
+	m_winner = 'n';
 
 	m_boardSize = TICTACTOE_BOARD_SIZE;
 	m_board = new char *[m_boardSize];
@@ -61,7 +63,7 @@ void TicTacToe::DoMove(int player, int row, int col) {
 	char playerSym = GetPlayerSymbol(player);
 	//Used m_winner member to store the winner's symbol for use
 	//in result outputting.
-	m_winner = NULL;
+	m_winner = 'n';
 	
 	//Brute force checking :c
 	//First check to see if the 'middle' spaces are taken, then check
@@ -101,7 +103,7 @@ void TicTacToe::DoMove(int player, int row, int col) {
 }
 
 bool TicTacToe::IsDone() const {
-	if(m_winner != NULL) {
+	if(m_winner != 'n') {
 		return true;
 	} else {
 		//Game is also over if the board is completely filled, regardless of 
@@ -121,13 +123,10 @@ bool TicTacToe::IsDone() const {
 void TicTacToe::OutputResults() const {
 	//If m_winner is not NULL, a player won. Otherwise, no one won
 	//and the game is a tie.
-	if(m_winner != NULL)
+	if(m_winner != 'n')
 		cout << "\nPlayer " << m_winner << " wins!\n";
 	else
 		cout << "\nThe game is a tie.\n";
-
-	int myInt;
-	cin >> myInt;
 }
 
 //
