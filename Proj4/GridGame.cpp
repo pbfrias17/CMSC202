@@ -1,3 +1,15 @@
+/***********************************************
+** File:     GridGame.cpp
+** Project:  CMSC 202 Project 4, Spring 14
+** Author:   Paolo Frias
+** Due Date: 4/25/14
+** Section:  07
+** E-mail:   pfrias2@umbc.edu
+**
+**   This is the GridGame class implementation. It defines all the
+**	methods used in GridGame and it's derived classes.
+***********************************************/
+
 #include <iostream>
 #include <cstdlib>
 #include <cstring>
@@ -16,16 +28,15 @@ GridGame::GridGame(enum GameType type, const char *gameName) {
 	m_gameName = gameName;
 }
 
-/* Output the a message saying:
+GridGame::~GridGame() {}
+
+/* Output a message saying:
 * "Welcome to <GAME NAME>!\nHope you enjoy playing.\n"
 */
 void GridGame::OutputGreeting() const {
 	cout << "Welcome to " << m_gameName << "!\n";
 }
 
-/* Returns NULL on good move, else returns err string.
-* Note that this check is game-neutral (at least for TTT and Reversi)
-*/
 char GridGame::GetPlayerSymbol(int player) const {
 	if(player >= static_cast<int>(strlen(m_playerSymbols))) {
 		cerr << "GetPlayerSymbol: illegal request\n";
@@ -38,6 +49,9 @@ int GridGame::GetBoardSize() const {
 	return m_boardSize;
 }
 
+/* Returns NULL on good move, else returns err string.
+* Note that this check is game-neutral (at least for TTT and Reversi)
+*/
 const char *GridGame::IsLegalMove(int player, int row, int col) const {
 	if(row < 0 || row >= m_boardSize || col < 0 || col >= m_boardSize) {
 		return "Row or column out of range";
