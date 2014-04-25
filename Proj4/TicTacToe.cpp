@@ -46,7 +46,15 @@ TicTacToe::TicTacToe(const char *playerSymbols)
 	}
 }
 
-TicTacToe::~TicTacToe() {}
+TicTacToe::~TicTacToe() {
+	for(int r = 0; r < m_boardSize; r++) {
+		delete[] m_board[r];
+		m_board[r] = NULL;
+	}
+
+	delete[] m_board;
+	m_board = NULL;
+}
 
 void TicTacToe::DoMove(int player, int row, int col) {
 	DoBasicMove(player, row, col);

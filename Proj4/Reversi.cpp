@@ -47,7 +47,15 @@ Reversi::Reversi(const char *playerSymbols)
 
 }
 
-Reversi::~Reversi() {}
+Reversi::~Reversi() {
+	for(int r = 0; r < m_boardSize; r++) {
+		delete[] m_board[r];
+		m_board[r] = NULL;
+	}
+
+	delete[] m_board;
+	m_board = NULL;
+}
 
 /*
 * Puts new piece for player at {row, col} position
