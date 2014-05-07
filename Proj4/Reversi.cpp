@@ -1,3 +1,15 @@
+/***********************************************
+** File:     Reversi.cpp
+** Project:  CMSC 202 Project 4, Spring 14
+** Author:   Paolo Frias
+** Due Date: 4/25/14
+** Section:  07
+** E-mail:   pfrias2@umbc.edu
+**
+**   This is the Reversi class implementation. It defines methods
+**	used only by Reversi game objects.
+***********************************************/
+
 #include <iostream>
 #include <cstring>
 #include <cstdlib>
@@ -35,6 +47,15 @@ Reversi::Reversi(const char *playerSymbols)
 
 }
 
+Reversi::~Reversi() {
+	for(int r = 0; r < m_boardSize; r++) {
+		delete[] m_board[r];
+		m_board[r] = NULL;
+	}
+
+	delete[] m_board;
+	m_board = NULL;
+}
 
 /*
 * Puts new piece for player at {row, col} position
