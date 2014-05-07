@@ -1,6 +1,7 @@
 #ifndef GRIDGAME_H
 #define GRIDGAME_H
 
+#include <vector>
 #include "GameType.h"
 
 class GridGame {
@@ -31,6 +32,8 @@ protected:
 	char **m_board;
 	enum GameType m_type;
 	const char *m_gameName;
+	int m_score;
+	char m_winner;
 };
 
 #endif //GRIDGAME_H
