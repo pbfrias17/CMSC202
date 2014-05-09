@@ -22,7 +22,7 @@ GridGame::GridGame() {
  * These constructors are protected, so only called by subclasses
  */
 
-GridGame::GridGame(enum GameType type, const char *gameName,
+GridGame::GridGame(const char *gameName,
 		   const char *playerSymbols, int boardSize) {
   m_type = type;
   m_gameName = gameName;

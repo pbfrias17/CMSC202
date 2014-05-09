@@ -1,34 +1,30 @@
 #ifndef GRIDGAME_H
 #define GRIDGAME_H
 
-#include "GameType.h"
-
 class GridGame {
 public:
     GridGame();
 
     ~GridGame();
 
-    enum GameType GetType() { return m_type; }
+    virtual void OutputGreeting() const;
 
-    void OutputGreeting() const;
+	virtual int NumPlayers() const;
 
-    int NumPlayers() const;
+    virtual char GetPlayerSymbol(int player) const;
 
-    char GetPlayerSymbol(int player) const;
-
-    int GetBoardSize() const;
+    virtual int GetBoardSize() const;
 
     /* Returns NULL on good move, else returns err string.
      * Note that this check is game-neutral (at least for TTT and Reversi)
      */
-    const char *IsLegalMove(int player, int row, int col) const;
+    virtual const char *IsLegalMove(int player, int row, int col) const;
 
-    void OutputBoard() const;
+    virtual void OutputBoard() const;
 
 
 protected:
-    GridGame(enum GameType type, const char *name, const char *playerSymbols, int boardSize);
+    GridGame(const char *name, const char *playerSymbols, int boardSize);
 
     void DoBasicMove(int player, int row, int col);
 

@@ -5,9 +5,9 @@
 #include "Proj5Aux.h"
 
 #include "GridGame.h"
-#include "TicTacToe.h"
-#include "Reversi.h"
-#include "Life.h"
+//#include "TicTacToe.h"
+//#include "Reversi.h"
+//#include "Life.h"
 
 using namespace std;
 
