@@ -11,16 +11,22 @@ public:
 
 	virtual int NumPlayers() const;
 
+	virtual bool IsDone() const = 0;
+
     virtual char GetPlayerSymbol(int player) const;
 
-    virtual int GetBoardSize() const;
+    int GetBoardSize() const;
 
     /* Returns NULL on good move, else returns err string.
      * Note that this check is game-neutral (at least for TTT and Reversi)
      */
     virtual const char *IsLegalMove(int player, int row, int col) const;
 
-    virtual void OutputBoard() const;
+	virtual void DoMove(int player, int row, int col);
+
+    void OutputBoard() const;
+
+	virtual void OutputResults() const = 0;
 
 
 protected:
@@ -33,7 +39,6 @@ protected:
     char **m_board;
 
 private:
-    enum GameType m_type;
     const char *m_gameName;
     int m_boardSize;
     const char *m_playerSymbols;

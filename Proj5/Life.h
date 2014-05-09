@@ -1,6 +1,8 @@
 #ifndef LIFE_H
 #define LIFE_H
 
+#include "GridGame.h"
+
 class Life: public GridGame {
   /*
    * YOUR CODE HERE.

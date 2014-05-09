@@ -5,10 +5,10 @@
 
 using namespace std;
 
-TicTacToe::TicTacToe() : GridGame(GAME_TICTACTOE, "TicTacToe", "XO", TICTACTOE_BOARD_SIZE) {}
+TicTacToe::TicTacToe() : GridGame("TicTacToe", "XO", TICTACTOE_BOARD_SIZE) {}
 
 TicTacToe::TicTacToe(const char *playerSymbols)
-  : GridGame(GAME_TICTACTOE, "TicTacToe", playerSymbols, TICTACTOE_BOARD_SIZE) {
+  : GridGame("TicTacToe", playerSymbols, TICTACTOE_BOARD_SIZE) {
 }
     
 

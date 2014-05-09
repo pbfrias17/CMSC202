@@ -5,10 +5,10 @@
 
 using namespace std;
 
-Reversi::Reversi() : GridGame(GAME_REVERSI, "Reversi", "XO", REVERSI_BOARD_SIZE) {}
+Reversi::Reversi() : GridGame("Reversi", "XO", REVERSI_BOARD_SIZE) {}
 
 Reversi::Reversi(const char *playerSymbols)
-  : GridGame(GAME_REVERSI, "Reversi", playerSymbols, REVERSI_BOARD_SIZE) {
+  : GridGame("Reversi", playerSymbols, REVERSI_BOARD_SIZE) {
 }
 
 
@@ -65,7 +65,7 @@ bool Reversi::IsDone() const {
   for (int r = 0; r < boardSize; r++) {
     for (int c = 0; c < boardSize; c++) {
       if (m_board[r][c] == '-') {
-	return false;
+		return false;
       }
     }
   }
@@ -86,9 +86,9 @@ void Reversi::OutputResults() const {
   for (int r = 0; r < boardSize; r++) {
     for (int c = 0; c < boardSize; c++) {
       for (int s = 0; s < 2; s++) {
-	if (m_board[r][c] == playerSym[s]) {
-	  ++(count[s]);
-	}
+		if (m_board[r][c] == playerSym[s]) {
+			++(count[s]);
+		}
       }
     }
   }

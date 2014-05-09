@@ -41,7 +41,7 @@ GridGame::GridGame(const char *gameName,
  * "Welcome to <GAME NAME>!\nHope you enjoy playing.\n"
  */
 void GridGame::OutputGreeting() const {
-  cout << "Welcome to " << m_gameName << "!\n";
+  cout << "Welcome to " << m_gameName << "!\nHope you enjoy playing.\n";
 }
 
 /* Returns NULL on good move, else returns err string.

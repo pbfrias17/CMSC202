@@ -5,9 +5,9 @@
 #include "Proj5Aux.h"
 
 #include "GridGame.h"
-//#include "TicTacToe.h"
-//#include "Reversi.h"
-//#include "Life.h"
+#include "TicTacToe.h"
+#include "Reversi.h"
+#include "Life.h"
 
 using namespace std;
 
@@ -17,17 +17,13 @@ GridGame *SetupGame(int argc, char *argv[]) {
 
   if (argc != 2) {
     cerr << "Syntax: " << argv[0] << " {ttt|reversi|life}" << endl;
-  }
-  else if (strcmp(argv[1], "ttt") == 0) {
+  } else if (strcmp(argv[1], "ttt") == 0) {
     game = new TicTacToe("XO");
-  }
-  else if (strcmp(argv[1], "reversi") == 0) {
+  } else if (strcmp(argv[1], "reversi") == 0) {
     game = new Reversi("XO");
-  }
-  else if (strcmp(argv[1], "life") == 0) {
+  } else if (strcmp(argv[1], "life") == 0) {
     game = new Life("O");
-  }
-  else {
+  }	else {
     cerr << argv[1] << ": unrecognized game\n";
   }
   return game;
