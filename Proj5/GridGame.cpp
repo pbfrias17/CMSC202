@@ -9,7 +9,6 @@ const int DEFAULT_NUM_PLAYERS = 2;
 
 
 GridGame::GridGame() {
-  m_type = GAME_UNKNOWN;
   m_gameName = "Unknown";
   m_boardSize = 0;
   m_board = NULL;
@@ -24,7 +23,6 @@ GridGame::GridGame() {
 
 GridGame::GridGame(const char *gameName,
 		   const char *playerSymbols, int boardSize) {
-  m_type = type;
   m_gameName = gameName;
   m_boardSize = boardSize;
   m_playerSymbols = playerSymbols;
@@ -74,6 +72,8 @@ const char *GridGame::IsLegalMove(int player, int row, int col) const {
     return NULL;
   }
 }
+
+void GridGame::DoMove(int player, int row, int col) {}
 
 /*
  * Puts new piece for player at {row, col} position

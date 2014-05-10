@@ -3,13 +3,20 @@
 
 #include "GridGame.h"
 
+const int LIFE_BOARD_SIZE = 4;
+
 class Life: public GridGame {
+	public:
+		Life();
+		Life(const char *playerSymbols);
+		bool IsDone() const;
+		void OutputResults() const;
   /*
    * YOUR CODE HERE.
    * MUST HAVE:
    *
    *   default constructor: calls parent's constructor with "O"
-   *
+   *	
    *   1-arg constructor: takes a char* pointing to a string of
    *     player symbols (will always be a single-echar string),
    *     passes that to GridGame's constructor
