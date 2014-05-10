@@ -3,14 +3,19 @@
 
 #include "GridGame.h"
 
-const int LIFE_BOARD_SIZE = 4;
+//LIFE_BOARD_SIZE should be 20 in this demonstration----
+const int LIFE_BOARD_SIZE = 20;
+const int DEFAULT_LIFE_PLAYERS = 1;
 
 class Life: public GridGame {
 	public:
 		Life();
 		Life(const char *playerSymbols);
+		int NumPlayers() const;
+		void DoMove(int player, int row, int col);
 		bool IsDone() const;
 		void OutputResults() const;
+
   /*
    * YOUR CODE HERE.
    * MUST HAVE:

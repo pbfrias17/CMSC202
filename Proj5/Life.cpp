@@ -9,8 +9,16 @@ Life::Life()
 Life::Life(const char* playerSymbols)
 : GridGame("Life", playerSymbols, LIFE_BOARD_SIZE) {}
 
+int Life::NumPlayers() const {
+	return DEFAULT_LIFE_PLAYERS;
+}
+
 bool Life::IsDone() const {
-	return true;
+	return false;
+}
+
+void Life::DoMove(int player, int row, int col) {
+	DoBasicMove(player, row, col);
 }
 
 void Life::OutputResults() const {
