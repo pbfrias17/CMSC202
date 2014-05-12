@@ -37,10 +37,10 @@ protected:
     // The only data member that the subclassed games should really
     // need full read/write access to, once game is set up.
     char **m_board;
-
+	int m_boardSize;
 private:
     const char *m_gameName;
-    int m_boardSize;
+    //int m_boardSize;
     const char *m_playerSymbols;
 
 };

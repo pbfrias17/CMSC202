@@ -15,6 +15,9 @@ class Life: public GridGame {
 		void DoMove(int player, int row, int col);
 		bool IsDone() const;
 		void OutputResults() const;
+	private:
+		char **m_tempBoard;
+		void GenGen();
 
   /*
    * YOUR CODE HERE.
