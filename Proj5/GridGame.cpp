@@ -93,7 +93,7 @@ void GridGame::DoBasicMove(int player, int row, int col) {
 }
 
 
-void GridGame::OutputBoard() const {
+void GridGame::OutputBoard() {
   for (int r = 0; r < m_boardSize; r++) {
     for (int c = 0; c < m_boardSize; c++) {
       cout << m_board[r][c];

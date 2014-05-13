@@ -15,10 +15,12 @@ class Life: public GridGame {
 		const char *IsLegalMove(int player, int row, int col) const;
 		void DoMove(int player, int row, int col);
 		void DoBasicMove(int player, int row, int col);
-		void OutputBoard() const;
+		void OutputBoard();
 		bool IsDone() const;
 		void OutputResults() const;
 	private:
+		bool m_done;
+		int m_genCount;
 		int m_iterations;
 		bool m_boolBoard[LIFE_BOARD_SIZE][LIFE_BOARD_SIZE];
 		void GenGen(int player);

@@ -24,7 +24,7 @@ public:
 
 	virtual void DoMove(int player, int row, int col);
 
-    virtual void OutputBoard() const;
+    virtual void OutputBoard();
 
 	virtual void OutputResults() const = 0;
 

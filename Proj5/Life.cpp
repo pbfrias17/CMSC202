@@ -4,17 +4,17 @@ using namespace std;
 
 
 Life::Life() 
-: GridGame("Life", "O", LIFE_BOARD_SIZE), m_iterations(0) {}
+: GridGame("Life", "O", LIFE_BOARD_SIZE), m_done(false), m_genCount(0){}
 
 Life::Life(const char* playerSymbols)
-: GridGame("Life", playerSymbols, LIFE_BOARD_SIZE), m_iterations(0) {}
+: GridGame("Life", playerSymbols, LIFE_BOARD_SIZE), m_done(false), m_genCount(0) {}
 
 int Life::NumPlayers() const {
 	return DEFAULT_LIFE_PLAYERS;
 }
 
 bool Life::IsDone() const {
-	return false;
+	return m_done;
 }
 
 const char *Life::IsLegalMove(int player, int row, int col) const {
@@ -31,12 +31,14 @@ const char *Life::IsLegalMove(int player, int row, int col) const {
 void Life::DoMove(int player, int row, int col) {
 	if(row == -1) {
 		if(col != -1) {
+			m_genCount += col + 1;
 			m_iterations = col + 1;
 			GenGen(player);
 		} else {
-			exit(1);
+			m_done = true;
 		}
 	} else {
+		m_iterations = 0;
 		DoBasicMove(player, row, col);
 	}
 
@@ -120,25 +122,40 @@ void Life::CheckSurrounding(bool isFilled, int row, int col) {
 	}
 }
 
-void Life::OutputBoard() const {
-	int cycle;
-	cycle = m_iterations;
+void Life::OutputBoard() {
 	do {
+
 		for(int r = 0; r < m_boardSize; r++) {
 			for(int c = 0; c < m_boardSize; c++) {
 				cout << m_board[r][c];
 			}
 			cout << endl;
 		}
-		cycle--;
-		if(cycle != 0) {
+
+		if(m_iterations > 0)
+			m_iterations--;
+
+		if(m_iterations != 0) {
 			GenGen(0);
+			cout << endl;
 		}
-	} while(cycle != 0);
+	} while(m_iterations > 0);
 		
 
 }
 
 void Life::OutputResults() const {
-	cout << "\nInside of Life object: outputting results...\n";
+	int count = 0;
+	for(int r = 0; r < m_boardSize; r++) {
+		for(int c = 0; c < m_boardSize; c++) {
+			if(m_board[r][c] != '-')
+				count++;
+		}
+	}
+
+	cout << "\nWent through " << m_genCount << " generations.\n";
+	cout << "There are " << count << " cells living.\n";
+
+	int myInt;
+	cin >> myInt >> myInt;
 }
