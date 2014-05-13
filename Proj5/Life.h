@@ -12,12 +12,14 @@ class Life: public GridGame {
 		Life();
 		Life(const char *playerSymbols);
 		int NumPlayers() const;
+		const char *IsLegalMove(int player, int row, int col) const;
 		void DoMove(int player, int row, int col);
 		bool IsDone() const;
 		void OutputResults() const;
 	private:
 		char **m_tempBoard;
 		void GenGen();
+		void CheckSurrounding(bool isFilled, int row, int col);
 
   /*
    * YOUR CODE HERE.
