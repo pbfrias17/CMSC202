@@ -32,7 +32,7 @@ public:
 protected:
     GridGame(const char *name, const char *playerSymbols, int boardSize);
 
-    void DoBasicMove(int player, int row, int col);
+    virtual void DoBasicMove(int player, int row, int col);
 
     // The only data member that the subclassed games should really
     // need full read/write access to, once game is set up.
@@ -40,7 +40,6 @@ protected:
 	int m_boardSize;
 private:
     const char *m_gameName;
-    //int m_boardSize;
     const char *m_playerSymbols;
 
 };
