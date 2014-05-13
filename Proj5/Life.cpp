@@ -52,7 +52,6 @@ void Life::DoMove(int player, int row, int col) {
 		for(int i = 0; i < col; i++) {
 			GenGen();
 		}**/
-		cout << "Generating next generation of cells...\n";
 		GenGen();
 	} else {
 		DoBasicMove(player, row, col);
@@ -64,8 +63,10 @@ void Life::GenGen() {
 	for(int row = 0; row < m_boardSize; row++) {
 		for(int col = 0; col < m_boardSize; col++) {
 			if(m_board[row][col] != '-') {
+				cout << "found a filled cell:\n";
 				CheckSurrounding(true, row, col);
 			} else {
+				cout << "found an empty cell:\n";
 				CheckSurrounding(false, row, col);
 			}
 		}
@@ -74,21 +75,38 @@ void Life::GenGen() {
 }
 
 void Life::CheckSurrounding(bool isFilled, int row, int col) {
-	int occCount = 0;
-	if(isFilled) {
-		//checking each 3X3 grid
-		for(int rInc = -1; rInc <= 1; rInc++) {
-			for(int cInc = -1; cInc <= 1; cInc++) {
-				if(row + rInc >= 0 && col + cInc >= 0)
-					if(m_board[row + rInc][col + cInc] != '-')
-						occCount++;
-			}
+	/////
+	int myInt;
+	cin >> myInt;
+	/////
+	int neighbors = 0;
+	for(int rInc = -1; rInc <= 1; rInc++) {
+		for(int cInc = -1; cInc <= 1; cInc++) {
+			if(row + rInc >= 0 && col + cInc >= 0)
+			if(m_board[row + rInc][col + cInc] != '-')
+				neighbors++;
 		}
-		if(occCount > 0) {
-			cout << occCount << endl;
+	}
+	/////////////////
+	if(isFilled)
+		cout << "\tthere are " << neighbors - 1 << " neighbors around this cell\n";
+	else
+		cout << "\tthere are " << neighbors << " neighbors around this cell\n";
+	
+	if(isFilled) {
+		//subtract 1 from neighbors because we don't consider the center piece as a neighbor to itself
+		if(neighbors - 1 < 2) {
+			cout << "\tdied of loneliness\n";
+		} else if(neighbors - 1 >= 2 && neighbors - 1 <= 3) {
+			cout << "\tcell stays put\n";
+		} else {
+			cout << "\tcell dies of overcrowding\n";
 		}
 	} else {
-		//diff checking
+		if(neighbors >= 3)
+			cout << "\treproduction! new cell added\n";
+		else
+			cout << "\tnothing happens blah\n";
 	}
 }
 
