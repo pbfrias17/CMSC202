@@ -1,3 +1,17 @@
+/***********************************************
+** File:     GridGame.cpp
+** Project:  CMSC 202 Project 5, Spring 14
+** Author:   Paolo Frias
+** Due Date: 5/14/14
+** Section:  07
+** E-mail:   pfrias2@umbc.edu
+**
+**   This defines the GridGame class implementation. It provides the general 
+**	methods used in a broad number of grid based games. Some methods are  
+**	overridden by the derived GridGame classes. 
+**
+***********************************************/
+
 #include <iostream>
 #include <cstdlib>
 #include <cstring>
@@ -13,7 +27,6 @@ GridGame::GridGame() {
   m_boardSize = 0;
   m_board = NULL;
   m_playerSymbols = NULL;
-  // YOUR CODE HERE
 }
 
 

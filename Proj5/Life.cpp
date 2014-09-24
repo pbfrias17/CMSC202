@@ -1,3 +1,26 @@
+/***********************************************
+** File:     Life.cpp
+** Project:  CMSC 202 Project 5, Spring 14
+** Author:   Paolo Frias
+** Due Date: 5/14/14
+** Section:  07
+** E-mail:   pfrias2@umbc.edu
+**
+**   This defines the Life class implementation. It provides the logic
+**	used to automatically generate boards (generations) using a predetermined
+**	set of rules. 
+**
+***********************************************/
+
+
+/****************************************************************
+* Name: Fraction
+*   Default (no-arg) constructor
+* Preconditions: None
+* Postconditions:
+*   Creates a mixed number of 0&0/1
+****************************************************************/
+
 #include "Life.h"
 #include <iostream>
 using namespace std;

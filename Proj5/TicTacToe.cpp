@@ -1,3 +1,16 @@
+/***********************************************
+** File:     TicTacToe.cpp
+** Project:  CMSC 202 Project 5, Spring 14
+** Author:   Paolo Frias
+** Due Date: 5/14/14
+** Section:  07
+** E-mail:   pfrias2@umbc.edu
+**
+**   This defines the TicTacToe class implementation. It provides the logic
+**	used to create and play a two player game of Tic Tac Toe.
+**
+***********************************************/
+
 #include <iostream>
 #include <cstring>
 #include <cstdlib>
